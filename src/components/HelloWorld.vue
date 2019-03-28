@@ -1,16 +1,24 @@
 <template>
-  <div class="hello">
+  <div class="main-container">
     <h1>{{ msg }}</h1>
     <p>
-      This makes an API call to https://jsonplaceholder.typicode.com/posts and
-      displays the results.
+      Here's a whole bunch of 'em.
     </p>
     <hr />
-    <article v-for="post in posts" :key="post.id">
-      <h2>{{ post.name }}</h2>
-      <p>{{ post.race }}</p>
-      <p>{{ post.gender }}</p>
-    </article>
+    <div class="characters">
+      <article
+        class="character"
+        v-for="character in characters"
+        :key="character.id"
+      >
+        <h2 class="character--name">{{ character.name }}</h2>
+        <img class="character--image" :src="character.image" />
+        <p class="character--description">
+          Race: {{ character.race }} <br />
+          Gender: {{ character.gender }}
+        </p>
+      </article>
+    </div>
   </div>
 </template>
 
@@ -25,13 +33,14 @@ export default {
   data() {
     return {
       isLoading: true,
-      posts: []
+      characters: []
     };
   },
   created() {
     FetchHandler.getCharacterProfiles()
-      .then(postData => {
-        this.posts = postData;
+      .then(characterData => {
+        console.log(characterData);
+        this.characters = characterData.data;
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -56,5 +65,49 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.main-container {
+  margin: 0 auto;
+}
+
+.character {
+  margin-bottom: 20px;
+
+  &--name {
+    margin-bottom: 5px;
+  }
+
+  &--image {
+    border-radius: 60px;
+  }
+}
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .character {
+    width: 50%;
+    float: left;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .main-container {
+    width: 960px;
+  }
+
+  .character {
+    width: 33%;
+    float: left;
+  }
 }
 </style>
