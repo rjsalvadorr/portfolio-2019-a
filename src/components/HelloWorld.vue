@@ -7,8 +7,9 @@
     </p>
     <hr />
     <article v-for="post in posts" :key="post.id">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.body }}</p>
+      <h2>{{ post.name }}</h2>
+      <p>{{ post.race }}</p>
+      <p>{{ post.gender }}</p>
     </article>
   </div>
 </template>
@@ -28,7 +29,7 @@ export default {
     };
   },
   created() {
-    FetchHandler.getPosts()
+    FetchHandler.getCharacterProfiles()
       .then(postData => {
         this.posts = postData;
       })
