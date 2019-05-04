@@ -1,14 +1,14 @@
 <template>
-  <div id="app"><HelloWorld msg="I herd you like fantasy characters" /></div>
+  <div id="app"><Main msg="I herd you like fantasy characters" /></div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Main from "./components/Main.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    Main
   }
 };
 </script>

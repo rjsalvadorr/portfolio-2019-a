@@ -1,4 +1,4 @@
-# rj-char-gen
+# portfolio-2019-a
 
 ## Project setup
 ```

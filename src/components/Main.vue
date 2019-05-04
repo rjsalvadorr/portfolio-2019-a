@@ -26,7 +26,7 @@
 import FetchHandler from "../api/fetchHandler";
 
 export default {
-  name: "HelloWorld",
+  name: "Main",
   props: {
     msg: String
   },
